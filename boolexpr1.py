@@ -64,9 +64,6 @@ precedence = (
    ('right', 'NOT'),
 )
 
-true_vars = set()
-false_vars = set()
-
 #################### BEGIN Grammar Pattern-Action Rules ####################
 
 global_ast = ""
@@ -144,6 +141,7 @@ def false_var(var: str) -> bool:
 #####   main()
 
 for i, line in enumerate(sys.stdin):
+    truevars = set()
     line = line.strip()
     print(f'{len(line)} -> {line}')
     print(f'{i+1}) {parser.parse(line)}')
