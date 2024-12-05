@@ -154,8 +154,6 @@ parser = yacc.yacc()
 def false_var(var: str) -> bool:
    return var not in true_vars.keys()
 
-#print(parser.parse('([] , f | t & f | ~ t)'))
-# main entry point
 if __name__ == "__main__":
 	main()
 
@@ -166,5 +164,3 @@ for i, line in enumerate(sys.stdin):
 	print(f'{len(line)} -> {line}')
 	print(f'{i+1}) {parser.parse(line)}')
 """
-
-# print(parser.parse("([q], p & q | f)"))
