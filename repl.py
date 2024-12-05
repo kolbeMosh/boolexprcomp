@@ -46,20 +46,8 @@ def main():
 		line = line[:-1]	# remove trailing newline
 		#line = line.strip()	# remove trailing newline
 		try:
-			#print(f')-> {line}')
 			ast = concrete2abstract(line,boolexpr1.parser)
-			#print(f"<-> {boolexpr1.true_vars.keys()}")
 			if ast:
-				# for debugging purposes
-				#print('"{}" is a program'.format(line))
-				#print("AST:", ast)
-				#print(abstract2concrete(ast))
-
-				# for debugging purposes
-				#if eval1(ast):
-				#	print(" is true.")
-				#else:
-				#	print(" is false.")
 
 				if not(cFlag):
 					# Interpret the expression by default

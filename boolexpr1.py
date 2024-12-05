@@ -1,3 +1,21 @@
+#*******************************************************************************
+#
+#      filename:  boolexpr1.py
+#
+#   description:  Converts a string into an AST.
+#
+#        author:  Mosher, Kolbe and Michael, Martinez
+# AMU e-mail id:  Kolbe.mosher@my.avemaria.edu, Michael.Martinez@my.avemaria.edu
+#
+#        course:  CSCI 370: Introduction to Computer Programming
+#    instructor:  Dr. Perugini
+#    assignment:  Quiz III
+#
+#      assigned:  November 27, 2024
+#           due:  December 05, 2024
+#
+#*********************************************************************
+
 from repl import *
 import ply.lex as lex
 import ply.yacc as yacc

@@ -1,3 +1,21 @@
+#*******************************************************************************
+#
+#      filename:  interpreter.py
+#
+#   description:  Implements an intrepreter for the BOOL Expression Grammar.
+#
+#        author:  Mosher, Kolbe and Michael, Martinez
+# AMU e-mail id:  Kolbe.mosher@my.avemaria.edu, Michael.Martinez@my.avemaria.edu
+#
+#        course:  CSCI 370: Introduction to Computer Programming
+#    instructor:  Dr. Perugini
+#    assignment:  Quiz III
+#
+#      assigned:  November 27, 2024
+#           due:  December 05, 2024
+#
+#*********************************************************************
+
 from typing import Union, List 
 from BoolExprADT import *
 

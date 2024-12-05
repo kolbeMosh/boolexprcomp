@@ -1,0 +1,285 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> sentence
+Rule 1     sentence -> LPAREN declarations COMMA expr RPAREN
+Rule 2     declarations -> LBRACK RBRACK
+Rule 3     declarations -> LBRACK varlist RBRACK
+Rule 4     varlist -> varlist COMMA VAR
+Rule 5     varlist -> VAR
+Rule 6     expr -> T
+Rule 7     expr -> F
+Rule 8     expr -> NOT expr
+Rule 9     expr -> expr AND expr
+Rule 10    expr -> expr OR expr
+Rule 11    expr -> VAR
+
+Terminals, with rules where they appear
+
+AND                  : 9
+COMMA                : 1 4
+F                    : 7
+LBRACK               : 2 3
+LPAREN               : 1
+NOT                  : 8
+OR                   : 10
+RBRACK               : 2 3
+RPAREN               : 1
+T                    : 6
+VAR                  : 4 5 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+declarations         : 1
+expr                 : 1 8 9 9 10 10
+sentence             : 0
+varlist              : 3 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . sentence
+    (1) sentence -> . LPAREN declarations COMMA expr RPAREN
+
+    LPAREN          shift and go to state 2
+
+    sentence                       shift and go to state 1
+
+state 1
+
+    (0) S' -> sentence .
+
+
+
+state 2
+
+    (1) sentence -> LPAREN . declarations COMMA expr RPAREN
+    (2) declarations -> . LBRACK RBRACK
+    (3) declarations -> . LBRACK varlist RBRACK
+
+    LBRACK          shift and go to state 4
+
+    declarations                   shift and go to state 3
+
+state 3
+
+    (1) sentence -> LPAREN declarations . COMMA expr RPAREN
+
+    COMMA           shift and go to state 5
+
+
+state 4
+
+    (2) declarations -> LBRACK . RBRACK
+    (3) declarations -> LBRACK . varlist RBRACK
+    (4) varlist -> . varlist COMMA VAR
+    (5) varlist -> . VAR
+
+    RBRACK          shift and go to state 6
+    VAR             shift and go to state 8
+
+    varlist                        shift and go to state 7
+
+state 5
+
+    (1) sentence -> LPAREN declarations COMMA . expr RPAREN
+    (6) expr -> . T
+    (7) expr -> . F
+    (8) expr -> . NOT expr
+    (9) expr -> . expr AND expr
+    (10) expr -> . expr OR expr
+    (11) expr -> . VAR
+
+    T               shift and go to state 10
+    F               shift and go to state 11
+    NOT             shift and go to state 12
+    VAR             shift and go to state 13
+
+    expr                           shift and go to state 9
+
+state 6
+
+    (2) declarations -> LBRACK RBRACK .
+
+    COMMA           reduce using rule 2 (declarations -> LBRACK RBRACK .)
+
+
+state 7
+
+    (3) declarations -> LBRACK varlist . RBRACK
+    (4) varlist -> varlist . COMMA VAR
+
+    RBRACK          shift and go to state 14
+    COMMA           shift and go to state 15
+
+
+state 8
+
+    (5) varlist -> VAR .
+
+    RBRACK          reduce using rule 5 (varlist -> VAR .)
+    COMMA           reduce using rule 5 (varlist -> VAR .)
+
+
+state 9
+
+    (1) sentence -> LPAREN declarations COMMA expr . RPAREN
+    (9) expr -> expr . AND expr
+    (10) expr -> expr . OR expr
+
+    RPAREN          shift and go to state 16
+    AND             shift and go to state 17
+    OR              shift and go to state 18
+
+
+state 10
+
+    (6) expr -> T .
+
+    RPAREN          reduce using rule 6 (expr -> T .)
+    AND             reduce using rule 6 (expr -> T .)
+    OR              reduce using rule 6 (expr -> T .)
+
+
+state 11
+
+    (7) expr -> F .
+
+    RPAREN          reduce using rule 7 (expr -> F .)
+    AND             reduce using rule 7 (expr -> F .)
+    OR              reduce using rule 7 (expr -> F .)
+
+
+state 12
+
+    (8) expr -> NOT . expr
+    (6) expr -> . T
+    (7) expr -> . F
+    (8) expr -> . NOT expr
+    (9) expr -> . expr AND expr
+    (10) expr -> . expr OR expr
+    (11) expr -> . VAR
+
+    T               shift and go to state 10
+    F               shift and go to state 11
+    NOT             shift and go to state 12
+    VAR             shift and go to state 13
+
+    expr                           shift and go to state 19
+
+state 13
+
+    (11) expr -> VAR .
+
+    RPAREN          reduce using rule 11 (expr -> VAR .)
+    AND             reduce using rule 11 (expr -> VAR .)
+    OR              reduce using rule 11 (expr -> VAR .)
+
+
+state 14
+
+    (3) declarations -> LBRACK varlist RBRACK .
+
+    COMMA           reduce using rule 3 (declarations -> LBRACK varlist RBRACK .)
+
+
+state 15
+
+    (4) varlist -> varlist COMMA . VAR
+
+    VAR             shift and go to state 20
+
+
+state 16
+
+    (1) sentence -> LPAREN declarations COMMA expr RPAREN .
+
+    $end            reduce using rule 1 (sentence -> LPAREN declarations COMMA expr RPAREN .)
+
+
+state 17
+
+    (9) expr -> expr AND . expr
+    (6) expr -> . T
+    (7) expr -> . F
+    (8) expr -> . NOT expr
+    (9) expr -> . expr AND expr
+    (10) expr -> . expr OR expr
+    (11) expr -> . VAR
+
+    T               shift and go to state 10
+    F               shift and go to state 11
+    NOT             shift and go to state 12
+    VAR             shift and go to state 13
+
+    expr                           shift and go to state 21
+
+state 18
+
+    (10) expr -> expr OR . expr
+    (6) expr -> . T
+    (7) expr -> . F
+    (8) expr -> . NOT expr
+    (9) expr -> . expr AND expr
+    (10) expr -> . expr OR expr
+    (11) expr -> . VAR
+
+    T               shift and go to state 10
+    F               shift and go to state 11
+    NOT             shift and go to state 12
+    VAR             shift and go to state 13
+
+    expr                           shift and go to state 22
+
+state 19
+
+    (8) expr -> NOT expr .
+    (9) expr -> expr . AND expr
+    (10) expr -> expr . OR expr
+
+    RPAREN          reduce using rule 8 (expr -> NOT expr .)
+    AND             reduce using rule 8 (expr -> NOT expr .)
+    OR              reduce using rule 8 (expr -> NOT expr .)
+
+  ! AND             [ shift and go to state 17 ]
+  ! OR              [ shift and go to state 18 ]
+
+
+state 20
+
+    (4) varlist -> varlist COMMA VAR .
+
+    RBRACK          reduce using rule 4 (varlist -> varlist COMMA VAR .)
+    COMMA           reduce using rule 4 (varlist -> varlist COMMA VAR .)
+
+
+state 21
+
+    (9) expr -> expr AND expr .
+    (9) expr -> expr . AND expr
+    (10) expr -> expr . OR expr
+
+    RPAREN          reduce using rule 9 (expr -> expr AND expr .)
+    AND             reduce using rule 9 (expr -> expr AND expr .)
+    OR              reduce using rule 9 (expr -> expr AND expr .)
+
+  ! AND             [ shift and go to state 17 ]
+  ! OR              [ shift and go to state 18 ]
+
+
+state 22
+
+    (10) expr -> expr OR expr .
+    (9) expr -> expr . AND expr
+    (10) expr -> expr . OR expr
+
+    RPAREN          reduce using rule 10 (expr -> expr OR expr .)
+    OR              reduce using rule 10 (expr -> expr OR expr .)
+    AND             shift and go to state 17
+
+  ! AND             [ reduce using rule 10 (expr -> expr OR expr .) ]
+  ! OR              [ shift and go to state 18 ]
+
